@@ -127,7 +127,6 @@ public class MyFrame extends JFrame implements ActionListener {
             System.out.println("test5");
         }
         if (event.getSource() == bStop) {
-            stopRequested = true;
             crops.stop();
         }
     }
