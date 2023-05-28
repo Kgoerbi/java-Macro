@@ -12,6 +12,8 @@ import static java.lang.Integer.parseInt;
 public class MyFrame extends JFrame implements ActionListener {
     String[] templates = {"Wheat", "Carrots", "Potato", "Cocoa Beans", "Melon", "Pumpkin", "Cactus", "Netherwards", "Sugar Cane"};
     public boolean stopRequested = false;
+    Skyblock crops = new Skyblock();
+
 
     JComboBox cbChooseTemplate;
     JLabel lNumberOfRows;
@@ -113,7 +115,6 @@ public class MyFrame extends JFrame implements ActionListener {
         this.setLayout(null);
         this.setVisible(true);
     }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == cbChooseTemplate) {
@@ -124,8 +125,10 @@ public class MyFrame extends JFrame implements ActionListener {
             executeTemplate();
 
             System.out.println("test5");
-        } else if (event.getSource() == bStop) {
+        }
+        if (event.getSource() == bStop) {
             stopRequested = true;
+            crops.stop();
         }
     }
 
@@ -192,8 +195,8 @@ public class MyFrame extends JFrame implements ActionListener {
         int timeBackwards = Integer.parseInt(textFieldValue4);
         timeBackwards *= 1000;
          */
-
         System.out.println("test2");
+
 
         try {
             if (!stopRequested && cbChooseTemplate.getSelectedItem() == templates[0]                  //Crops
@@ -203,7 +206,9 @@ public class MyFrame extends JFrame implements ActionListener {
                 System.out.println("test3");
                 //Skyblock.farmCrops(numberRows, numberFields, timeForwards);
 
-                Skyblock crops = new Skyblock(numberRows, numberFields, timeForwards);
+                crops.rowsPerField = numberRows;
+                crops.fields = numberFields;
+                crops.timeRow = timeForwards;
                 crops.start();
 
                 System.out.println("test7");

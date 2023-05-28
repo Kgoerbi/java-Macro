@@ -1,5 +1,7 @@
 package javaMacro.macros.skyblock;
 
+import javaMacro.setup.MyFrame;
+import javaMacro.setup.MyFrame.*;
 import javaMacro.setup.MyThread;
 
 import java.awt.*;
@@ -7,22 +9,16 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Skyblock extends Thread {
-    public int e;
-    public int f;
-    public int g;
-
-    public Skyblock(int a, int b, int c){
-        e = a;
-        f = b;
-        g = c;
-    }
+    public int rowsPerField;
+    public int fields;
+    public int timeRow;
     @Override
     public void run() {
-        try {
-            farmCrops(e,f,g);
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
+            try {
+                farmCrops(rowsPerField, fields, timeRow);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
     }
 
     public static void farmCrops(int rowsPerField,int fields, int timeRow) throws Exception{
@@ -38,6 +34,7 @@ public class Skyblock extends Thread {
         Thread.sleep(2500);
 
         robot.keyPress(KeyEvent.VK_V);
+
 
         for (int i = 0; i <= fields; i++) {
             for (int j = 0; j <= rowsPerField; j++) {
