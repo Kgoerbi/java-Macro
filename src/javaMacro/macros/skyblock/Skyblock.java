@@ -7,9 +7,22 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Skyblock extends Thread {
+    public int e;
+    public int f;
+    public int g;
+
+    public Skyblock(int a, int b, int c){
+        e = a;
+        f = b;
+        g = c;
+    }
     @Override
     public void run() {
-
+        try {
+            farmCrops(e,f,g);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public static void farmCrops(int rowsPerField,int fields, int timeRow) throws Exception{

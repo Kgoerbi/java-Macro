@@ -201,7 +201,11 @@ public class MyFrame extends JFrame implements ActionListener {
                     || cbChooseTemplate.getSelectedItem() == templates[2]
                     || cbChooseTemplate.getSelectedItem() == templates[7]) {
                 System.out.println("test3");
-                Skyblock.farmCrops(numberRows, numberFields, timeForwards);
+                //Skyblock.farmCrops(numberRows, numberFields, timeForwards);
+
+                Skyblock crops = new Skyblock(numberRows, numberFields, timeForwards);
+                crops.start();
+
                 System.out.println("test7");
             }
         } catch (Exception e) {
